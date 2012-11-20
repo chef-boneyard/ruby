@@ -18,6 +18,6 @@ attribute "languages/ruby/default_version",
  :default => "1.8",
  :description => "The Ruby version to install with the ruby recipe and create symlinks for with the symlinks recipe. Unfortunately this setting only works fully on Ubuntu, Debian and Gentoo."
 
-%w{ centos redhat fedora ubuntu debian arch gentoo }.each do |os|
+%w{ centos redhat fedora ubuntu debian arch gentoo oracle amazon scientific}.each do |os|
   supports os
 end
