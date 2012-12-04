@@ -31,7 +31,7 @@ define :ruby_symlinks, :action => :create, :force => false, :path => '/usr/bin' 
 
       unless params[:force]
         not_if do
-          if ::File.exists?(path) and not File.symlink?(path)
+          if ::File.exists?(path) and not ::File.symlink?(path)
             scope.log "Not modifying non-symbolic-link #{path}"
             true
           end
