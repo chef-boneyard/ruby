@@ -22,8 +22,8 @@ define :ruby_packages, :action => :install do
   rv = params[:name].to_s
   raise "A Ruby version such as 1.8, 1.9 or 1.9.1 must be given" if rv.empty?
 
-  packages = case node[:platform]
-  when "ubuntu","debian"
+  packages = case node[:platform_family]
+  when "debian"
     [
       "ruby#{rv}",
       "ruby#{rv}-dev",
@@ -47,7 +47,7 @@ define :ruby_packages, :action => :install do
      ("dev-ruby/ruby-shadow" if rv == "1.8")
     ].compact
 
-  when "centos","redhat","fedora"
+  when "rhel", "fedora"
     # yum requires full version numbers. :(
     %w{
       ruby
