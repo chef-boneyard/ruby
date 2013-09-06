@@ -57,7 +57,6 @@ define :ruby_packages, :action => :install do
       ruby-ri
       ruby-irb
       ruby-rdoc
-      ruby-mode
     }
 
   when "arch"
