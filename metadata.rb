@@ -3,7 +3,7 @@ maintainer        "Chef Software, Inc."
 maintainer_email  "cookbooks@chef.io"
 license           "Apache 2.0"
 description       "Installs Ruby and related packages"
-version           "0.9.2"
+version           "0.9.3"
 
 recipe "ruby", "Installs Ruby and related packages"
 recipe "1.8", "Installs Ruby 1.8 and related packages"
