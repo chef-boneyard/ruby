@@ -23,49 +23,48 @@ define :ruby_packages, :action => :install do
   raise "A Ruby version such as 1.8, 1.9 or 1.9.1 must be given" if rv.empty?
 
   packages = case node[:platform_family]
-  when "debian"
-    [
-      "ruby#{rv}",
-      "ruby#{rv}-dev",
-      "rdoc#{rv}",
-      "ri#{rv}",
-      "irb#{rv}",
-      "libopenssl-ruby#{rv}",
-     ("libshadow-ruby1.8" if rv == "1.8")
-    ].compact
+             when "debian"
+             [
+               "ruby#{rv}-full",
+               "libopenssl-ruby#{rv}",
+               ("libshadow-ruby1.8" if rv == "1.8")
+             ].compact
 
-  when "gentoo"
-    rv = rv.slice(0..2)
-    target = "ruby" + rv.delete('.')
+             when "gentoo"
+               rv = rv.slice(0..2)
+               target = "ruby" + rv.delete('.')
 
-    [
-      # ruby-ssl is before ruby to ensure that ruby is initially
-      # installed with the ssl USE flag enabled.
-      "virtual/ruby-ssl:#{target}",
-      "dev-lang/ruby:#{rv}",
-      "virtual/ruby-rdoc:#{target}",
-     ("dev-ruby/ruby-shadow" if rv == "1.8")
-    ].compact
+               [
+                 # ruby-ssl is before ruby to ensure that ruby is initially
+                 # installed with the ssl USE flag enabled.
+                 "virtual/ruby-ssl:#{target}",
+                 "dev-lang/ruby:#{rv}",
+                 "virtual/ruby-rdoc:#{target}",
+                ("dev-ruby/ruby-shadow" if rv == "1.8")
+               ].compact
 
-  when "rhel", "fedora"
-    # yum requires full version numbers. :(
-    %w{
-      ruby
-      ruby-libs
-      ruby-devel
-      ruby-docs
-      ruby-ri
-      ruby-irb
-      ruby-rdoc
-    }
+             when "rhel", "fedora"
+               # yum requires full version numbers. :(
+               %w{
+                    ruby
+                    ruby-libs
+                    ruby-devel
+                    ruby-docs
+                    ruby-ri
+                    ruby-irb
+                    ruby-rdoc
+                 }
 
-  when "arch"
-    # 1.8 only available from AUR. :(
-    %w{
-      ruby
-      ruby-docs
-    }
-  end
+             when "arch"
+               # 1.8 only available from AUR. :(
+               %w{
+                    ruby
+                    ruby-docs
+                 }
+
+             when "smartos"
+               ["ruby-#{rv}"]
+             end
 
   unless packages.nil?
     packages.each do |pkg|

@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-ruby_packages node[:languages][:ruby][:default_version] || "1.8"
+ruby_packages node['ruby']['cookbook_version']
