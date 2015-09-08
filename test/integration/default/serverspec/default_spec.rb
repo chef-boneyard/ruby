@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 ruby_ver = case os[:family]
-  when "debian", "ubuntu"
-    "ruby1.9.1"
-  else
-    "ruby"
+           when 'debian', 'ubuntu'
+             'ruby1.9.1'
+           else
+             'ruby'
 end
 
 describe package(ruby_ver) do

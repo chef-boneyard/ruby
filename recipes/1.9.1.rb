@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-ruby_packages "1.9.1"
+ruby_packages '1.9.1'

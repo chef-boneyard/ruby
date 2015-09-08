@@ -17,4 +17,4 @@
 # limitations under the License.
 #
 
-ruby_symlinks node[:languages][:ruby][:default_version] || "1.8"
+ruby_symlinks node[:languages][:ruby][:default_version] || '1.8'

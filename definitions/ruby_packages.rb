@@ -18,82 +18,82 @@
 # limitations under the License.
 #
 
-define :ruby_packages, :action => :install do
+define :ruby_packages, action: :install do
   rv = params[:name].to_s
-  raise "A Ruby version such as 1.8, 1.9 or 1.9.1 must be given" if rv.empty?
+  fail 'A Ruby version such as 1.8, 1.9 or 1.9.1 must be given' if rv.empty?
 
   packages = case node['platform_family']
-    when "debian"
-    [
-      "ruby#{rv}-full",
-      "libopenssl-ruby#{rv}",
-      ("libshadow-ruby1.8" if rv == "1.8")
-    ].compact
+             when 'debian'
+               [
+                 "ruby#{rv}-full",
+                 "libopenssl-ruby#{rv}",
+                 ('libshadow-ruby1.8' if rv == '1.8')
+               ].compact
 
-    when "gentoo"
-      rv = rv.slice(0..2)
-      target = "ruby" + rv.delete('.')
+             when 'gentoo'
+               rv = rv.slice(0..2)
+               target = 'ruby' + rv.delete('.')
 
-      [
-        # ruby-ssl is before ruby to ensure that ruby is initially
-        # installed with the ssl USE flag enabled.
-        "virtual/ruby-ssl:#{target}",
-        "dev-lang/ruby:#{rv}",
-        "virtual/ruby-rdoc:#{target}",
-       ("dev-ruby/ruby-shadow" if rv == "1.8")
-      ].compact
+               [
+                 # ruby-ssl is before ruby to ensure that ruby is initially
+                 # installed with the ssl USE flag enabled.
+                 "virtual/ruby-ssl:#{target}",
+                 "dev-lang/ruby:#{rv}",
+                 "virtual/ruby-rdoc:#{target}",
+                 ('dev-ruby/ruby-shadow' if rv == '1.8')
+               ].compact
 
-    when "rhel"
-      if node['platform_version'].to_i >= 7
-        %w{
-          ruby
-          ruby-doc
-          ruby-libs
-          ruby-devel
-          ruby-irb
-        }
-      else
-        %w{
-          ruby
-          ruby-ri
-          ruby-docs
-          ruby-rdoc
-          ruby-libs
-          ruby-devel
-          ruby-irb
-        }
-      end
+             when 'rhel'
+               if node['platform_version'].to_i >= 7
+                 %w(
+                   ruby
+                   ruby-doc
+                   ruby-libs
+                   ruby-devel
+                   ruby-irb
+                 )
+               else
+                 %w(
+                   ruby
+                   ruby-ri
+                   ruby-docs
+                   ruby-rdoc
+                   ruby-libs
+                   ruby-devel
+                   ruby-irb
+                 )
+               end
 
-    when "fedora"
-      if node['platform_version'].to_i >= 20
-        %w{
-          ruby
-          ruby-doc
-          ruby-libs
-          ruby-devel
-          ruby-irb
-        }
-      else
-        %w{
-          ruby
-          ruby-ri
-          ruby-docs
-          ruby-rdoc
-          ruby-libs
-          ruby-devel
-          ruby-irb
-        }
-      end
+             when 'fedora'
+               if node['platform_version'].to_i >= 20
+                 %w(
+                   ruby
+                   ruby-doc
+                   ruby-libs
+                   ruby-devel
+                   ruby-irb
+                 )
+               else
+                 %w(
+                   ruby
+                   ruby-ri
+                   ruby-docs
+                   ruby-rdoc
+                   ruby-libs
+                   ruby-devel
+                   ruby-irb
+                 )
+               end
 
-    when "arch"
-      # 1.8 only available from AUR. :(
-      %w{
-           ruby
-           ruby-docs
-        }
+             when 'arch'
+               # 1.8 only available from AUR. :(
+               %w(
+                 ruby
+                 ruby-docs
+               )
 
-    when "smartos"
-      ["ruby-#{rv}"]
+             when 'smartos'
+               ["ruby-#{rv}"]
     end
 
   unless packages.nil?
