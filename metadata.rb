@@ -1,8 +1,9 @@
-name "ruby"
+name              "ruby"
 maintainer        "Chef Software, Inc."
 maintainer_email  "cookbooks@chef.io"
 license           "Apache 2.0"
 description       "Installs Ruby and related packages"
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "0.9.3"
 
 recipe "ruby", "Installs Ruby and related packages"
@@ -18,6 +19,9 @@ attribute "languages/ruby/default_version",
  :default => "1.8",
  :description => "The Ruby version to install with the ruby recipe and create symlinks for with the symlinks recipe. Unfortunately this setting only works fully on Ubuntu, Debian and Gentoo."
 
-%w{ centos redhat fedora ubuntu debian arch gentoo oracle amazon scientific}.each do |os|
+%w{ amazon arch centos debian fedora gentoo oracle redhat scientific suse ubuntu }.each do |os|
   supports os
 end
+
+source_url 'https://github.com/chef-cookbooks/ruby' if respond_to?(:source_url)
+issues_url 'https://github.com/chef-cookbooks/ruby/issues' if respond_to?(:issues_url)
