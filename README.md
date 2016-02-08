@@ -3,6 +3,9 @@
 
 Installs Ruby and related packages.
 
+# DEPRECATION NOTICE
+As the pace of Ruby development has increased and the era of Ruby 1.8 / 1.9 has come to an end, we see little need for this cookbook. It is officially considered deprecated, and we recommend against its use. We're open to a complete rethinking of the cookbook with a whole new codebase and functionality. If you're interested shoot us an e-mail at cookbooks@chef.io
+
 # Requirements
 ## Platform
 Tested on Ubuntu 10.04. Debian and Gentoo should also work fully. CentOS, Red Hat, Fedora and Arch are partially supported.

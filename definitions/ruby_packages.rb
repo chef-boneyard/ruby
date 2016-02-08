@@ -20,7 +20,7 @@
 
 define :ruby_packages, action: :install do
   rv = params[:name].to_s
-  fail 'A Ruby version such as 1.8, 1.9 or 1.9.1 must be given' if rv.empty?
+  raise 'A Ruby version such as 1.8, 1.9 or 1.9.1 must be given' if rv.empty?
 
   packages = case node['platform_family']
              when 'debian'
@@ -94,7 +94,7 @@ define :ruby_packages, action: :install do
 
              when 'smartos'
                ["ruby-#{rv}"]
-    end
+             end
 
   unless packages.nil?
     packages.each do |pkg|

@@ -5,7 +5,7 @@ ruby_ver = case os[:family]
              'ruby1.9.1'
            else
              'ruby'
-end
+           end
 
 describe package(ruby_ver) do
   it { should be_installed }
