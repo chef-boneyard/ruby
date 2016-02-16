@@ -68,6 +68,8 @@ a ruby >= 2.1, and wants it to be portable, it MUST use the source installation 
 
 ### Recipes
 
+FIXME: no recipes this is just the "I NEED RUBY" resource use case
+
 The default recipe MUST be equivalent to the "I NEED RUBY" use case.  This use case asserts "i do not care, I just
 need ruby in my PATH".
 
@@ -78,6 +80,8 @@ This recipe MUST not be tweakable by attributes.
 If a ruby has been installed via packages or installed via source and wired up to the PATH, this recipe is a NOP
 
 ### Ruby Version Recipes
+
+FIXME: no recipes this is just the "I NEED RUBY >= 2.1" resource use case
 
 These recipe are satisfied if the appropriate ruby version has been source installed into the server.  We need
 a library method to query so that the cookbook can determine where the ruby version it wants has been installed.
