@@ -1,8 +1,15 @@
 # Redesign Proposal
 
+## Out of Scope
+
+- this IS NOT an rvm cookbook
+- this IS NOT an rbenv cookbook
+- this IS NOT a chruby cookbook
+
 ## Problem
 
-Existing ruby cookbooks are all pretty crappy and fail to deliver a useful API to library cookbooks.
+Existing ruby cookbooks all try to do too many things and fail to deliver useful use cases to
+either library cookbooks or users.
 
 They rely on overriding attributes and source-vs-binary package installs and try to do too much.
 
