@@ -12,7 +12,7 @@ recipe '1.9', 'Installs Ruby 1.9 and related packages'
 recipe '1.9.1', 'Installs Ruby 1.9.1 and related packages'
 recipe 'symlinks', 'Installs symlinks for the default Ruby version'
 
-%w( amazon arch centos debian fedora gentoo oracle redhat scientific suse ubuntu ).each do |os|
+%w( amazon arch centos debian fedora gentoo oracle redhat scientific suse ubuntu zlinux ).each do |os|
   supports os
 end
 
